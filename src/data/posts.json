@@ -1,0 +1,174 @@
+{
+  "posts": [
+    {
+      "_id": "651001abcde0000000000001",
+      "author": "64f1c2a1e4b0f1a2c3d4e001",
+      "content": "A day without laughter is a day wasted.",
+      "images": [],
+      "likes": [
+        "64f1c2a1e4b0f1a2c3d4e002"
+      ],
+      "comments": [],
+      "tags": [
+        "quote",
+        "humor"
+      ],
+      "createdAt": "2025-09-15T08:00:00.000Z",
+      "updatedAt": "2025-09-15T08:00:00.000Z"
+    },
+    {
+      "_id": "651001abcde0000000000002",
+      "author": "64f1c2a1e4b0f1a2c3d4e002",
+      "content": "Morning coffee ritual ☕️",
+      "images": [
+        "http://cepegra-labs.be/fullstack/vincent/fakepostvideo/photo5.jpg"
+      ],
+      "likes": [
+        "64f1c2a1e4b0f1a2c3d4e001"
+      ],
+      "comments": [],
+      "tags": [
+        "routine",
+        "morning"
+      ],
+      "createdAt": "2025-09-15T08:30:00.000Z",
+      "updatedAt": "2025-09-15T08:30:00.000Z"
+    },
+    {
+      "_id": "651001abcde0000000000003",
+      "author": "64f1c2a1e4b0f1a2c3d4e003",
+      "content": "Weekend hike in the Vosges 🥾",
+      "images": [
+        "http://cepegra-labs.be/fullstack/vincent/fakepostvideo/photo4.jpg"
+      ],
+      "likes": [
+        "64f1c2a1e4b0f1a2c3d4e004"
+      ],
+      "comments": [
+        {
+          "author": "64f1c2a1e4b0f1a2c3d4e005",
+          "text": "Beautiful scenery!",
+          "date": "2025-09-15T09:00:00.000Z"
+        }
+      ],
+      "tags": [
+        "nature",
+        "hiking"
+      ],
+      "createdAt": "2025-09-15T08:45:00.000Z",
+      "updatedAt": "2025-09-15T09:05:00.000Z"
+    },
+    {
+      "_id": "651001abcde0000000000004",
+      "author": "64f1c2a1e4b0f1a2c3d4e004",
+      "content": "Reflecting on the passage of time...",
+      "images": [],
+      "likes": [],
+      "comments": [],
+      "tags": [
+        "philosophy",
+        "time"
+      ],
+      "createdAt": "2025-09-15T09:30:00.000Z",
+      "updatedAt": "2025-09-15T09:30:00.000Z"
+    },
+    {
+      "_id": "651001abcde0000000000005",
+      "author": "64f1c2a1e4b0f1a2c3d4e005",
+      "content": "New interior design 🌿",
+      "images": [
+        "http://cepegra-labs.be/fullstack/vincent/fakepostvideo/photo3.jpg"
+      ],
+      "likes": [
+        "64f1c2a1e4b0f1a2c3d4e006"
+      ],
+      "comments": [],
+      "tags": [
+        "home",
+        "design"
+      ],
+      "createdAt": "2025-09-15T10:00:00.000Z",
+      "updatedAt": "2025-09-15T10:00:00.000Z"
+    },
+    {
+      "_id": "651001abcde0000000000006",
+      "author": "64f1c2a1e4b0f1a2c3d4e006",
+      "content": "A little poem to start the day.",
+      "images": [],
+      "likes": [
+        "64f1c2a1e4b0f1a2c3d4e007"
+      ],
+      "comments": [],
+      "tags": [
+        "poetry",
+        "morning"
+      ],
+      "createdAt": "2025-09-15T10:30:00.000Z",
+      "updatedAt": "2025-09-15T10:30:00.000Z"
+    },
+    {
+      "_id": "651001abcde0000000000007",
+      "author": "64f1c2a1e4b0f1a2c3d4e007",
+      "content": "Representing the people's voice is a duty.",
+      "images": [],
+      "likes": [],
+      "comments": [],
+      "tags": [
+        "activism",
+        "citizenship"
+      ],
+      "createdAt": "2025-09-15T11:00:00.000Z",
+      "updatedAt": "2025-09-15T11:00:00.000Z"
+    },
+    {
+      "_id": "651001abcde0000000000008",
+      "author": "64f1c2a1e4b0f1a2c3d4e008",
+      "content": "Northern lights last night ✨",
+      "images": [
+        "http://cepegra-labs.be/fullstack/vincent/fakepostvideo/photo2.jpg"
+      ],
+      "likes": [
+        "64f1c2a1e4b0f1a2c3d4e009"
+      ],
+      "comments": [],
+      "tags": [
+        "nature",
+        "night"
+      ],
+      "createdAt": "2025-09-15T11:30:00.000Z",
+      "updatedAt": "2025-09-15T11:30:00.000Z"
+    },
+    {
+      "_id": "651001abcde0000000000009",
+      "author": "64f1c2a1e4b0f1a2c3d4e009",
+      "content": "Discretion doesn't mean absence.",
+      "images": [],
+      "likes": [],
+      "comments": [],
+      "tags": [
+        "thought",
+        "presence"
+      ],
+      "createdAt": "2025-09-15T12:00:00.000Z",
+      "updatedAt": "2025-09-15T12:00:00.000Z"
+    },
+    {
+      "_id": "651001abcde0000000000010",
+      "author": "64f1c2a1e4b0f1a2c3d4e010",
+      "content": "Connected from the mountains 🏔️",
+      "images": [
+        "http://cepegra-labs.be/fullstack/vincent/fakepostvideo/photo1.jpg"
+      ],
+      "likes": [
+        "64f1c2a1e4b0f1a2c3d4e001"
+      ],
+      "comments": [],
+      "tags": [
+        "travel",
+        "connection"
+      ],
+      "createdAt": "2025-09-15T12:30:00.000Z",
+      "updatedAt": "2025-09-15T12:30:00.000Z"
+    }
+  ]
+}

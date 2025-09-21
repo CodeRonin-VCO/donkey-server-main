@@ -1,0 +1,124 @@
+{
+  "users": [
+    {
+      "_id": "64f1c2a1e4b0f1a2c3d4e001",
+      "firstname": "Alain",
+      "lastname": "Provist",
+      "email": "alain.provist@example.com",
+      "password": "Cacouette_123",
+      "avatar": "https://example.com/avatars/alainp.jpg",
+      "bio": "Toujours là quand on ne s'y attend pas.",
+      "friends": [],
+      "createdAt": "2025-09-15T13:00:00.000Z",
+      "updatedAt": "2025-09-15T13:00:00.000Z"
+    },
+    {
+      "_id": "64f1c2a1e4b0f1a2c3d4e002",
+      "firstname": "Paul",
+      "lastname": "Ochon",
+      "email": "paul.ochon@example.com",
+      "password": "Motdepasse123",
+      "avatar": "https://example.com/avatars/paulo.jpg",
+      "bio": "Toujours prêt à aider, sauf quand il dort.",
+      "friends": [],
+      "createdAt": "2025-09-15T13:01:00.000Z",
+      "updatedAt": "2025-09-15T13:01:00.000Z"
+    },
+    {
+      "_id": "64f1c2a1e4b0f1a2c3d4e003",
+      "firstname": "Laurent",
+      "lastname": "Houtan",
+      "email": "laurent.houtan@example.com",
+      "password": "Randonnée456",
+      "avatar": "https://example.com/avatars/laurent.jpg",
+      "bio": "Fan de randonnées et de jeux de mots.",
+      "friends": [],
+      "createdAt": "2025-09-15T13:02:00.000Z",
+      "updatedAt": "2025-09-15T13:02:00.000Z"
+    },
+    {
+      "_id": "64f1c2a1e4b0f1a2c3d4e004",
+      "firstname": "Ali",
+      "lastname": "Mentation",
+      "email": "ali.mentation@example.com",
+      "password": "Reflexion789",
+      "avatar": "https://example.com/avatars/ali.jpg",
+      "bio": "Toujours en pleine réflexion.",
+      "friends": [],
+      "createdAt": "2025-09-15T13:03:00.000Z",
+      "updatedAt": "2025-09-15T13:03:00.000Z"
+    },
+    {
+      "_id": "64f1c2a1e4b0f1a2c3d4e005",
+      "firstname": "Alex",
+      "lastname": "Térieur",
+      "email": "alex.terieur@example.com",
+      "password": "InsideOut321",
+      "avatar": "https://example.com/avatars/alex.jpg",
+      "bio": "L'intérieur compte autant que l'extérieur.",
+      "friends": [],
+      "createdAt": "2025-09-15T13:04:00.000Z",
+      "updatedAt": "2025-09-15T13:04:00.000Z"
+    },
+    {
+      "_id": "64f1c2a1e4b0f1a2c3d4e006",
+      "firstname": "Alain",
+      "lastname": "Verse",
+      "email": "alain.verse@example.com",
+      "password": "PoetryTime654",
+      "avatar": "https://example.com/avatars/alainv.jpg",
+      "bio": "Poète à ses heures perdues.",
+      "friends": [],
+      "createdAt": "2025-09-15T13:05:00.000Z",
+      "updatedAt": "2025-09-15T13:05:00.000Z"
+    },
+    {
+      "_id": "64f1c2a1e4b0f1a2c3d4e007",
+      "firstname": "Jean",
+      "lastname": "Peuplu",
+      "email": "jean.peuplu@example.com",
+      "password": "PeuplePower987",
+      "avatar": "https://example.com/avatars/jean.jpg",
+      "bio": "Représentant du peuple, selon lui.",
+      "friends": [],
+      "createdAt": "2025-09-15T13:06:00.000Z",
+      "updatedAt": "2025-09-15T13:06:00.000Z"
+    },
+    {
+      "_id": "64f1c2a1e4b0f1a2c3d4e008",
+      "firstname": "Aurore",
+      "lastname": "Boréale",
+      "email": "aurore.boreale@example.com",
+      "password": "NorthernLight321",
+      "avatar": "https://example.com/avatars/aurore.jpg",
+      "bio": "Brille dans la nuit comme une étoile.",
+      "friends": [],
+      "createdAt": "2025-09-15T13:07:00.000Z",
+      "updatedAt": "2025-09-15T13:07:00.000Z"
+    },
+    {
+      "_id": "64f1c2a1e4b0f1a2c3d4e009",
+      "firstname": "Anne",
+      "lastname": "Honyme",
+      "email": "anne.honyme@example.com",
+      "password": "Discretion007",
+      "avatar": "https://example.com/avatars/anne.jpg",
+      "bio": "Discrète mais toujours présente.",
+      "friends": [],
+      "createdAt": "2025-09-15T13:08:00.000Z",
+      "updatedAt": "2025-09-15T13:08:00.000Z"
+    },
+    {
+      "_id": "64f1c2a1e4b0f1a2c3d4e010",
+      "firstname": "Camille",
+      "lastname": "Onette",
+      "email": "camille.onette@example.com",
+      "password": "AlwaysOnline999",
+      "avatar": "https://example.com/avatars/camille.jpg",
+      "bio": "Toujours connectée, même hors ligne.",
+      "friends": [],
+      "createdAt": "2025-09-15T13:09:00.000Z",
+      "updatedAt": "2025-09-15T13:09:00.000Z"
+    }
+  ]
+}
