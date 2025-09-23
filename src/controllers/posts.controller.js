@@ -3,23 +3,13 @@ import { Post } from "../models/posts.model.js";
 
 const postsController = {
     createPost: async (req, res) => {
-        // todo: debug
-        console.log("Fichiers reçus :", req.files);
-        console.log("Fichiers reçus :", req.body);
+        const author = new mongoose.Types.ObjectId(req.user.id); // récupérer avec le token
+        const { content } = req.body;
 
-
-        const { author, content } = req.body;
-
-        if (!author) {
-            res.status(400).json({ message: "Author is required." })
+        if (!content) {
+            res.status(400).json({ message: "Content is required." })
             return;
         }
-
-        // Check if objectId
-        if (!mongoose.Types.ObjectId.isValid(author)) {
-            res.status(400).json({ message: "Invalid author ID." });
-            return;
-        };
 
         // Extract uploaded image paths from req.files
         const baseUrl = `${req.protocol}://${req.get("host")}`;
@@ -30,8 +20,8 @@ const postsController = {
         // DB
         try {
             const newPost = new Post({
-                author,
-                content,
+                author: author,
+                content: content,
                 images: imagePaths,
                 videos: videoPaths
             })
@@ -39,6 +29,7 @@ const postsController = {
             const savedPost = await newPost.save();
 
             return res.status(201).json({
+                succes: true,
                 message: "Post successfully created.",
                 post: savedPost
             })
@@ -50,7 +41,6 @@ const postsController = {
         }
     },
     getPost: async (req, res) => {
-
         const posts = await Post.aggregate([
             { $lookup: { from: 'users', localField: 'author', foreignField: '_id', as: 'author' } },
             { $unwind: '$author' },
@@ -81,48 +71,49 @@ const postsController = {
     },
     toggleLike: async (req, res) => {
         const { postId } = req.params;
-        const userId = req.user._id;
+        const author = new mongoose.Types.ObjectId(req.user.id);
 
         try {
             const post = await Post.findById(postId);
 
             if (!post) {
                 res.status(404).json({ message: "Post not found." });
-
                 return;
             };
 
-            const isLiked = post.likes.includes(userId);
+            const isLiked = post.likes.includes(author);
             if (isLiked) {
-                post.likes.pull(userId);
+                post.likes.pull(author);
                 post.likesCount = post.likes.length;
             } else {
-                post.likes.push(userId);
+                post.likes.push(author);
                 post.likesCount = post.likes.length;
             };
 
             await post.save();
 
-            return res.status(200).json({success: true, likesCount: post.likesCount, isLiked: !isLiked});
+            return res.status(200).json({ success: true, likesCount: post.likesCount, isLiked: !isLiked });
 
         } catch (error) {
             console.error("Error liking post", error);
-            res.status(500).json({message: "Error while liking post."})
+            res.status(500).json({ message: "Error while liking post." })
             return;
         }
     },
     addComment: async (req, res) => {
         const { postId } = req.params;
-        const { author, text } = req.body;
+        const { text } = req.body;
+        const author = new mongoose.Types.ObjectId(req.user.id);
 
-        if (!postId || !author || !text) {
-            res.status(400).json({ message: "Fields are required." })
+
+        if (!text) {
+            res.status(400).json({ message: "Comment text is required." })
             return;
         };
 
         // Check if objectId
-        if (!mongoose.Types.ObjectId.isValid(author) || !mongoose.Types.ObjectId.isValid(postId)) {
-            res.status(400).json({ message: "Invalid author or postId." });
+        if (!mongoose.Types.ObjectId.isValid(postId)) {
+            res.status(400).json({ message: "Invalid postId." });
             return;
         };
 
@@ -136,8 +127,8 @@ const postsController = {
 
             // Create new comment
             const newComment = {
-                author,
-                text,
+                author: author,
+                text: text,
                 date: new Date().toISOString()
             };
 
@@ -157,7 +148,7 @@ const postsController = {
             return;
         };
     },
-    getComment: async (req, res) => {
+    getComments: async (req, res) => {
         const { postId } = req.params;
 
         if (!postId) {
@@ -173,20 +164,23 @@ const postsController = {
 
         // DB
         try {
-            const post = await Post.findById(postId);
+            const post = await Post.findById(postId).populate({
+                path: "comments.author",
+                select: "firstname lastname avatar"
+            });
             if (!post) {
                 res.status(404).json({ message: "Post not found." })
                 return;
             };
 
-            return res.status(200).json({ message: "Comments successfully retrieved.", comments: post.comments });
+            return res.status(200).json({ success: true, message: "Comments successfully retrieved.", comments: post.comments });
 
         } catch (error) {
             console.error("Error getting comment", error);
-            res.status(500).json({ message: "Error getting comments.", error: error.message })
+            res.status(500).json({ message: "Error retrieving comments.", error: error.message })
             return;
         };
-    }, 
+    },
 }
 
 export default postsController;

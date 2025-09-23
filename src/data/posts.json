@@ -8,6 +8,7 @@
       "likes": [
         "64f1c2a1e4b0f1a2c3d4e002"
       ],
+      "likesCount": 1,
       "comments": [],
       "tags": [
         "quote",
@@ -26,6 +27,7 @@
       "likes": [
         "64f1c2a1e4b0f1a2c3d4e001"
       ],
+      "likesCount": 1,
       "comments": [],
       "tags": [
         "routine",
@@ -44,13 +46,8 @@
       "likes": [
         "64f1c2a1e4b0f1a2c3d4e004"
       ],
-      "comments": [
-        {
-          "author": "64f1c2a1e4b0f1a2c3d4e005",
-          "text": "Beautiful scenery!",
-          "date": "2025-09-15T09:00:00.000Z"
-        }
-      ],
+      "likesCount": 1,
+      "comments": [],
       "tags": [
         "nature",
         "hiking"
@@ -64,6 +61,7 @@
       "content": "Reflecting on the passage of time...",
       "images": [],
       "likes": [],
+      "likesCount": 0,
       "comments": [],
       "tags": [
         "philosophy",
@@ -82,6 +80,7 @@
       "likes": [
         "64f1c2a1e4b0f1a2c3d4e006"
       ],
+      "likesCount": 1,
       "comments": [],
       "tags": [
         "home",
@@ -93,11 +92,12 @@
     {
       "_id": "651001abcde0000000000006",
       "author": "64f1c2a1e4b0f1a2c3d4e006",
-      "content": "A little poem to start the day.",
+      "content": "A little poem to start the day : \n\nThe sun peeks in, the world is still, \n A quiet breath, a gentle thrill. \nNew chances bloom with every ray— Hello, hope. \nHello, day.",
       "images": [],
       "likes": [
         "64f1c2a1e4b0f1a2c3d4e007"
       ],
+      "likesCount": 1,
       "comments": [],
       "tags": [
         "poetry",
@@ -112,6 +112,7 @@
       "content": "Representing the people's voice is a duty.",
       "images": [],
       "likes": [],
+      "likesCount": 0,
       "comments": [],
       "tags": [
         "activism",
@@ -130,6 +131,7 @@
       "likes": [
         "64f1c2a1e4b0f1a2c3d4e009"
       ],
+      "likesCount": 1,
       "comments": [],
       "tags": [
         "nature",
@@ -144,6 +146,7 @@
       "content": "Discretion doesn't mean absence.",
       "images": [],
       "likes": [],
+      "likesCount": 0,
       "comments": [],
       "tags": [
         "thought",
@@ -160,8 +163,10 @@
         "http://cepegra-labs.be/fullstack/vincent/fakepostvideo/photo1.jpg"
       ],
       "likes": [
-        "64f1c2a1e4b0f1a2c3d4e001"
+        "64f1c2a1e4b0f1a2c3d4e001",
+        "64f1c2a1e4b0f1a2c3d4e009"
       ],
+      "likesCount": 2,
       "comments": [],
       "tags": [
         "travel",

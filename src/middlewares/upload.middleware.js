@@ -59,3 +59,22 @@ export const uploadAvatar = multer({
     limits: { fileSize: 2 * 1024 * 1024 }
 }).single("avatar"); // Field name: "avatar"
 
+
+// ==== Storage for user banners ====
+const bannerStorage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        const uploadDir = path.join(process.cwd(), 'uploads', 'banners');
+        callback(null, uploadDir); // Utilise le chemin absolu
+    },
+    filename: (req, file, callback) => {
+        const uniqueName = Date.now() + "-" + file.originalname;
+        callback(null, uniqueName);
+    }
+});
+
+export const uploadBanner = multer({
+    storage: bannerStorage,
+    fileFilter: fileFilter,
+    limits: { fileSize: 2 * 1024 * 1024 }
+}).single("banner"); // Field name: "banner"
+

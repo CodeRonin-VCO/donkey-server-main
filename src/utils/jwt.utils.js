@@ -1,10 +1,10 @@
 import jwt from "jsonwebtoken";
 
-export function generateToken({ id, username, role }) {
+export function generateToken({ id, username, email, role }) {
     
     //  Promise writing 
     return new Promise( (resolve, reject) => {
-        const data = { id, username, role };
+        const data = { id, username, email, role };
         const secretKey = process.env.JWT_SECRET;
 
         //  Config token 
@@ -45,7 +45,8 @@ export function decodeToken(token) {
                 reject(error);
                 return;
             }
-
+            // todo: debug
+            console.log("🧪 [decodeToken] Payload:", data);
             resolve(data);
         });
     });

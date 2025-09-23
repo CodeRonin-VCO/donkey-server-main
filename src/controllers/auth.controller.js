@@ -25,7 +25,12 @@ const authController = {
                 return;
             }
 
-            const token = await generateToken(userFound);
+            const token = await generateToken({
+                    id: userFound._id.toString(),
+                    username: userFound.username,
+                    email: userFound.email,
+                    role: userFound.role
+                });
 
             return res.status(200).json({
                 message: "Connected successfully.",

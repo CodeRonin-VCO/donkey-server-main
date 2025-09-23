@@ -24,6 +24,8 @@ export function authentificationMiddleware() {
         // If yes → get data from token and autorized access
         try {
             req.user = await decodeToken(token);
+            // todo: debug
+            console.log("🧪 [Middleware] User decoded from token:", req.user);
 
         } catch {
             req.user = null;

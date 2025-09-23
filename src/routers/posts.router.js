@@ -8,11 +8,11 @@ postsRouter.route("/")
     .post(uploadPostMedia, postsController.createPost)
     .get(postsController.getPost);
     
-postsRouter.route("/:postId/like")
+postsRouter.route("/:postId/likes")
     .post(postsController.toggleLike);
 
 postsRouter.route("/:postId/comments")
     .post(postsController.addComment)
-    .get(postsController.getComment);
+    .get(postsController.getComments);
 
 export default postsRouter;

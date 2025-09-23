@@ -14,8 +14,11 @@ const userSchema = new mongoose.Schema({
     },
     password: { type: String, required: true },
     avatar: { type: String }, // URL ou nom de fichier
+    banner: { type: String }, // URL ou nom de fichier
     bio: { type: String },
-    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+    loc: { type: String },
+    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    friendsCount: { type: Number, default: 0 },
 }, { timestamps: true });
 
 
