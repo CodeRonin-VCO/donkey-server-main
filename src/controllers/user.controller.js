@@ -174,43 +174,140 @@ const userController = {
             return;
         };
     },
-    getOtherUserData: async (req, res) => {
-        const { id } = req.params;
-
+    getUserFriends: async (req, res) => {
+        const { id } = req.user;
         try {
-            // Recherche utilisateur par id, on exclut les données sensibles
-            const userFound = await User.findById(id)
-                .select("-password -__v -email") // ne pas exposer mot de passe, email, etc.
-                .exec();
+            const userWithFriends = await User.findById(id)
+                .populate("friends", "-password -__v -email")
+                .select("-password -__v");
 
-            if (!userFound) {
+            if (!userWithFriends) {
                 return res.status(404).json({ message: "User not found." });
-            }
-
-            // Calculer les compteurs, comme pour le profil perso
-            const postsCount = await Post.countDocuments({ author: id });
-            const heartsGivenCount = await Post.countDocuments({ likes: id });
-
-            const userWithCounts = {
-                ...userFound.toObject(),
-                postsCount,
-                friendsCount: userFound.friendsCount || 0,
-                heartsGivenCount,
             };
 
             return res.status(200).json({
-                message: "User public information retrieved successfully.",
-                user: userWithCounts
+                message: "Friends list retrieved successfully.",
+                friends: userWithFriends.friends
             });
 
         } catch (error) {
-            console.error("Error getting public user data", error);
+            console.error("Error retrieving friends:", error);
             return res.status(500).json({
-                message: "Error getting public user data.",
+                message: "Server error retrieving friends.",
                 error: error.message
             });
         }
     },
+    getAllUsers: async (req, res) => {
+        try {
+            const users = await User.find()
+                .select("-password -__v -email")
+                .exec();
+
+            return res.status(200).json({
+                message: "All users retrieved successfully.",
+                users,
+            });
+        } catch (error) {
+            console.error("Error getting all users:", error);
+
+            return res.status(500).json({
+                message: "Error getting all users.",
+                error: error.message,
+            });
+        }
+    },
+    addFriends: async (req, res) => {
+        const userId = req.user.id;
+        const { friendId } = req.body;
+
+        if (!friendId || !mongoose.Types.ObjectId.isValid(friendId)) {
+            return res.status(400).json({ message: "Invalid friend ID." });
+        }
+
+        if (friendId === userId) {
+            return res.status(400).json({ message: "You cannot add yourself as a friend." });
+        }
+
+        try {
+            // Vérifier que l'ami existe
+            const friendUser = await User.findById(friendId);
+            if (!friendUser) {
+                return res.status(404).json({ message: "Friend user not found." });
+            }
+
+            // Récupérer l'utilisateur actuel
+            const user = await User.findById(userId);
+
+            // Vérifier si l'ami est déjà dans la liste
+            if (user.friends.includes(friendId)) {
+                return res.status(400).json({ message: "User is already your friend." });
+            }
+
+            // Ajouter l'ami
+            user.friends.push(friendId);
+            user.friendsCount = user.friends.length;
+
+            await user.save();
+
+            return res.status(200).json({
+                message: "Friend added successfully.",
+                friends: user.friends,
+                friendsCount: user.friendsCount
+            });
+
+        } catch (error) {
+            console.error("Error adding friend:", error);
+            return res.status(500).json({
+                message: "Server error adding friend.",
+                error: error.message
+            });
+        }
+    },
+    deleteFriends: async (req, res) => {
+        const userId = req.user.id;
+        const { friendId } = req.body;
+
+        if (!friendId || !mongoose.Types.ObjectId.isValid(friendId)) {
+            return res.status(400).json({ message: "Invalid friend ID." });
+        }
+
+        if (friendId === userId) {
+            return res.status(400).json({ message: "You cannot remove yourself." });
+        }
+
+        try {
+            const user = await User.findById(userId);
+
+            if (!user) {
+                return res.status(404).json({ message: "User not found." });
+            }
+
+            if (!user.friends.includes(friendId)) {
+                return res.status(400).json({ message: "User is not your friend." });
+            }
+
+            // Remove friend from list
+            user.friends = user.friends.filter(id => id.toString() !== friendId);
+            user.friendsCount = user.friends.length;
+
+            await user.save();
+
+            return res.status(200).json({
+                message: "Friend removed successfully.",
+                friends: user.friends,
+                friendsCount: user.friendsCount
+            });
+
+        } catch (error) {
+            console.error("Error removing friend:", error);
+            return res.status(500).json({
+                message: "Server error removing friend.",
+                error: error.message
+            });
+        }
+    }
+
 };
 
 export default userController;

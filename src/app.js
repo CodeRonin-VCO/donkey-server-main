@@ -5,22 +5,35 @@ import { connectDB, initDB } from "./config/init-db.js";
 import cors from "cors"
 import { authentificationMiddleware } from "./middlewares/auh.middleware.js";
 import path from "path";
+import http from "http";
+import { Server } from "socket.io";
+import { setupSocket } from "./sockets/socket.js";
 
 // ==== Setup ====
 const { PORT, NODE_ENV } = process.env;
 const app = express();
 
 // ==== Global middlewares ====
-app.use(morgan("tiny")); 
+app.use(morgan("tiny"));
 app.use(cors()); // manage http/htpps problems
 app.use(express.json()); // convert in json
-app.use(authentificationMiddleware()); // auth access
-app.use("/api", apiRouter) // main route
+app.use("/api",authentificationMiddleware(), apiRouter) // main route + auth access
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'))); // Serve uploaded files local
 
 // ==== Connection DB ====
 await connectDB();
 await initDB();
+
+// ==== Serveur HTTP natif pour socket.io ====
+const server = http.createServer(app);
+
+// ==== Initialise Socket.IO ====
+const io = new Server(server, {
+  cors: {
+    origin: "*",  // adapte en prod pour ta sécurité
+  }
+});
+setupSocket(io);
 
 
 // ==== Middleware Error ====
@@ -42,7 +55,7 @@ app.use((error, req, res, next) => {
 })
 
 // ==== Serveur ====
-app.listen(PORT, async (error) => {
+server.listen(PORT, async (error) => {
     if (error) {
         console.log(`Failure to start server`, error);
         return;

@@ -59,12 +59,15 @@ const postsController = {
 
         // Build the complete URL for photos
         const baseUrl = `${req.protocol}://${req.get("host")}`;
+        const userId = req.user?.id?.toString();
         const postWithFullMediaUrls = posts.map(post => {
             const imagesWithFullUrls = post.images.map(imagePath => imagePath.startsWith("http") ? imagePath : `${baseUrl}${imagePath}`);
             const videosWithFullUrls = post.videos.map(videoPath => videoPath.startsWith("http") ? videoPath : `${baseUrl}${videoPath}`);
 
+            const isLiked = userId && post.likes?.some(id => id.toString() === userId);
+
             // Destructuration get post + images
-            return { ...post, images: imagesWithFullUrls, videos: videosWithFullUrls }
+            return { ...post, images: imagesWithFullUrls, videos: videosWithFullUrls, isLiked, likes:undefined }
         })
 
         res.status(201).json({ message: "Posts successfully retrieved.", posts: postWithFullMediaUrls });

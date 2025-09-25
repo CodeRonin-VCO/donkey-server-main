@@ -39,6 +39,8 @@
         - Routes authentification
         - Routes posts
         - Routes users
+    /sockets
+        - Gestion de la messagerie instantanée côté back
     /utils
         - Gestion du token (générer et décoder)
     /app
@@ -56,8 +58,9 @@
 ```
 
 <!-- todo: -->
-<!-- 1. Gérer les like de façon globale pour qu'ils restent rouges après avoir changé de page -->
 <!-- 2. Créer connections → un user + user/:userId pour voir le profil des autres -->
 <!-- 3. Mettre en place un système de messagerie instantanée -->
-<!-- 4. Activer la barre de recherche -->
 <!-- 5. Faire une page de loading en cas de fallback -->
+
+
+<!-- fixme: changer l'url des images ceperegra vers du local au cas ou pas de connexion internet -->
