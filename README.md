@@ -1,8 +1,23 @@
 # Donkey - Social Network
 
+Donkey est un réseau social moderne développé avec la stack MERN (MongoDB, Express, React, Node.js). Il propose des fonctionnalités sociales classiques comme l’authentification, la publication de posts, les commentaires, la gestion des utilisateurs et la messagerie instantanée.
+
 ## Technologies
-- Node.js
-- Express.js
+Backend :
+
+    Node.js
+
+    Express.js
+
+    MongoDB (via Mongoose)
+
+Frontend :
+
+    React (non inclus ici, à connecter séparément)
+
+Temps réel :
+
+    WebSockets (via socket.io)
 
 ## Dependancies
 - nodemon
@@ -13,8 +28,7 @@
 - cors
 - multer
 
-// todo: adapter cela
-## Infos diverses
+## Structure du backend
 /src
 - Contient tous les fichiers de l'application
 ```
@@ -48,6 +62,7 @@
         - Middlewares globaux (morgan, cors, authentification, route, upload, connectDB, error, serveur)
 ```
 
+## Dossiers d’upload
 
 /uploads
 - Contient les images envoyées en locales (imitation avec multer)
