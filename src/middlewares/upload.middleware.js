@@ -7,6 +7,7 @@ const fileFilter = (req, file, callback) => {
         'image/jpeg',
         'image/png',
         'image/gif',
+        'image/webp',
         'video/mp4',
         'video/quicktime',
         'video/x-msvideo',

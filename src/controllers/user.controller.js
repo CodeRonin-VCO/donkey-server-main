@@ -306,6 +306,45 @@ const userController = {
                 error: error.message
             });
         }
+    },
+    getProfileById: async (req, res) => {
+        const { id } = req.params;
+
+        try {
+            if (!mongoose.Types.ObjectId.isValid(id)) {
+                return res.status(400).json({ message: "Invalid user ID." });
+            }
+
+            const userFound = await User.findById(id)
+                .select("-password -__v -email")
+                .populate("friends", "-password -__v -email")
+                .exec();
+
+            if (!userFound) {
+                return res.status(404).json({ message: "User not found." });
+            }
+
+            const postsCount = await Post.countDocuments({ author: id });
+            const heartsGivenCount = await Post.countDocuments({ likes: id });
+
+            const userProfile = {
+                ...userFound.toObject(),
+                postsCount,
+                heartsGivenCount,
+                friendsCount: userFound.friends.length,
+            };
+
+            return res.status(200).json({
+                message: "User profile retrieved successfully.",
+                user: userProfile
+            });
+        } catch (error) {
+            console.error("Error getting user profile:", error);
+            return res.status(500).json({
+                message: "Error getting user profile.",
+                error: error.message
+            });
+        }
     }
 
 };

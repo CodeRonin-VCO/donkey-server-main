@@ -56,11 +56,3 @@
     /posts
     /banner
 ```
-
-<!-- todo: -->
-<!-- 2. Créer connections → un user + user/:userId pour voir le profil des autres -->
-<!-- 3. Mettre en place un système de messagerie instantanée -->
-<!-- 5. Faire une page de loading en cas de fallback -->
-
-
-<!-- fixme: changer l'url des images ceperegra vers du local au cas ou pas de connexion internet -->

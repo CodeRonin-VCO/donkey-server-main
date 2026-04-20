@@ -20,4 +20,6 @@ userRouter.route("/info/connections")
     .delete(userController.deleteFriends);
 userRouter.route("/info/connections/allusers").get(userController.getAllUsers);
 
+userRouter.route("/info/connections/:id").get(userController.getProfileById);
+
 export default userRouter;

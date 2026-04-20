@@ -26,7 +26,7 @@ const postsController = {
                 videos: videoPaths
             })
 
-            const savedPost = await newPost.save();
+            const savedPost = await newPost.save().then(p => p.populate('author'));
 
             return res.status(201).json({
                 succes: true,
